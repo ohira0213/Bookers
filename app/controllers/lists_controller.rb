@@ -6,7 +6,7 @@ class ListsController < ApplicationController
   def create
     list=List.new(list_params)
     list.save
-    redirect_to '/reload'
+    redirect_to list_path(list.id)
   end
   
   def index
@@ -18,11 +18,12 @@ class ListsController < ApplicationController
   end
 
   def edit
+    @list=List.find(params[:id])
   end
   
   private
   
   def list_params
-    params.require(:list).permit(:title,:body)
+    params.require(:list).permit(:title, :body)
   end
 end
