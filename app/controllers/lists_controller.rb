@@ -6,13 +6,15 @@ class ListsController < ApplicationController
   def create
     list=List.new(list_params)
     list.save
-    redirect_to'/reload'
+    redirect_to '/reload'
   end
   
   def index
+    @lists=List.all
   end
 
   def show
+    @list=List.find(params[:id])
   end
 
   def edit
