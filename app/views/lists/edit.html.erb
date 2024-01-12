@@ -1,5 +1,5 @@
 <h1>Editing Book</h1>
-<%= form_with model: @list do |f| %>
+<%= form_with model: @list, url: update_list_path(@list.id), method: :patch do |f| %>
 
   <h4>Title</h4>
   <%= f.text_field :title %>
@@ -9,5 +9,5 @@
 	
   <%= f.submit 'Update Books' %>
   
-  <p><a href ="https://2b7d7c905b744255a28199b0ff78bcc0.vfs.cloud9.ap-northeast-1.amazonaws.com/lists/1" />Show|<a href ="https://2b7d7c905b744255a28199b0ff78bcc0.vfs.cloud9.ap-northeast-1.amazonaws.com/lists/new" />Back</p>
+   <%= link_to "Show", list_path(@list.id) %> | <%= link_to "Back", lists_new_path %>
 <% end %>

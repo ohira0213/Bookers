@@ -1,9 +1,18 @@
-<h1>New book</h1>
-<% @lists.each do |list| %>
+ <h1>New book</h1>
 
-  <p>タイトル</p>
-  <span>
-    <%= link_to list.title, list_path(list.id) %>
-  </span>
-  
-<% end %>
+   <%= form_with model: @list,url: '/lists',methood: :post do |f| %>
+     <p>Title</p>
+     <span>
+       <%= link_to list.title, list_path(list.id) %>
+     </span>
+
+     <p>Body</p>
+     <span>
+       <%= link_to list.body, list_path(list.id) %>
+     </span>
+   <% end %>
+
+   <% @lists.each do |list| %>
+     <p>Title: <%= list.title %></p>
+     <p>Body: <%= list.body %></p>
+   <% end %>
