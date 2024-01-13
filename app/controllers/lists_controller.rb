@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
   def new
     @lists = List.all
-    @list = List.new
+    
   end
 
   def create
@@ -21,7 +21,7 @@ class ListsController < ApplicationController
   def edit
     @list=List.find(params[:id])
   end
-  
+
   def update
     list=List.find(params[:id])
     list.update(list_params)
@@ -33,7 +33,7 @@ class ListsController < ApplicationController
     list.destroy
     redirect_to '/lists'
   end
-  
+
   private
   def list_params
     params.require(:list).permit(:title, :body)

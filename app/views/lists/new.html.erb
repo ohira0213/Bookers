@@ -1,17 +1,17 @@
   <h1>New book</h1>
-  
+
    <% @lists.each do |list| %>
      <p>Title: <%= list.title %></p>
      <p>Body: <%= list.body %></p>
-   <% end %>
+   <%= link_to "Show", list_path(@list.id) %> <%= link_to "Edit", edit_list_path(@list.id) %> <%= link_to "削除", destroy_list_path(@lists), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+  <% end %>
 
    <%= form_with model: @list,url: '/lists',methood: :post do |f| %>
      <h4>Title</h4>
      <%= f.text_field :title %>
-     
+
      <h4>Body</h4>
      <%= f.text_area :body %>
 
      <%= f.submit 'Create books' %>
    <% end %>
-   
